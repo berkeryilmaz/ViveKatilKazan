@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "3a048e30-d10b-454c-9476-d1234e6d76f9",
+		"name": "Noodle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"key\", jsonData.key);",
+									"    pm.collectionVariables.set(\"secret\", jsonData.secret);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "exampleUser",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "example@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "examplePassword",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "exampleRole",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/user/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"secret\", jsonData.secret);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "example@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "examplePassword",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"key\", jsonData.key);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "example@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "examplePassword",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/user/changeKey"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/user?key={{key}}&secret={{secret}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "secret",
+									"value": "{{secret}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check",
+			"item": [
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/api/check/status"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Get Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/post/?key={{key}}&secret={{secret}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"post",
+								""
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "secret",
+									"value": "{{secret}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/post/{{postID}}?key={{key}}&secret={{secret}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"{{postID}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "secret",
+									"value": "{{secret}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"postID\", jsonData._id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/post/?key={{key}}&secret={{secret}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"post",
+								""
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "secret",
+									"value": "{{secret}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "ExampleTitle",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ExampleDescription",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/post/{{postID}}?key={{key}}&secret={{secret}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"{{postID}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "secret",
+									"value": "{{secret}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/post/{{postID}}?key={{key}}&secret={{secret}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"{{postID}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "secret",
+									"value": "{{secret}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "postID",
+			"value": ""
+		},
+		{
+			"key": "key",
+			"value": ""
+		},
+		{
+			"key": "secret",
+			"value": ""
+		},
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000"
+		}
+	]
+}
